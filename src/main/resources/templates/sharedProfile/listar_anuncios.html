@@ -8,23 +8,44 @@
 </head>
 <th:block layout:fragment="conteudo">
     <div class="col-md-offset-2 col-md-8">
-    
+
         <h1>Anúncios</h1>
         <!-- Text input-->
         <div th:if="${anuncios.isEmpty()}">
             <h4>Nenhum Anúncio listado</h4>
         </div>
-        
-        <form class="form-inline"  method="post" role="form" th:object="${anuncioForm}" th:action="@{/user/buscar/anuncio}">
-        
+
+        <form class="form-inline"  method="get" th:action="@{buscar}">
+         	  <!-- Form Name -->
+          	<legend>Buscar anúncio</legend>
+
+          	<!-- Text input -->
+   			    <div class="form-group">
+     			      <label for="chave">Termo:</label>
+      			    <input type="chave" class="form-control" id="chave" name="chave" placeholder="digite um termo de busca"/>
+    		    </div>
+
+    		    <!-- Checkbox (Double)-->
+    		    <div class="checkbox">
+    		        <label>em:</label>
+     			      <label><input type="checkbox" name="nome"/> Nome do anúncio</label>
+     			      <label><input type="checkbox" name="categoria"/>Categoria-tag</label>
+    		    </div>
+
+    		    <!-- Button -->
+             <div class="form-group">
+                 <button type="submit" class="btn btn-success">Buscar</button>
+             </div>
+
         </form>
-        
+
+
         <div th:if="${anuncios != null}" class="table-responsive">
             <table style="width:100%" class="table table-bordered">
                 <tr>
                     <th>Titulo</th>
                     <th>Tipo</th>
-                    <th>Categoria/tag</th>
+                    <th>Categoria-tag</th>
                     <th>Postado</th>
                     <th align="right">Preço</th>
                 </tr>
