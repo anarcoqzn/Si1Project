@@ -147,6 +147,6 @@ public class Anuncio {
                 ", preco=" + preco +
                 ", nota=" + nota +
                 ", tipo='" + tipo + '\'' +
-                '}';
-    }
+				'}';
+	}
 }

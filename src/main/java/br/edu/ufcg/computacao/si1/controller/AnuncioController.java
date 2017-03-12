@@ -15,13 +15,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-public class An {
+public class AnuncioController {
 
     @Autowired
     private AnuncioServiceImpl anuncioService;
 
     @Autowired
-    private AnuncioRepository anuncioRep;
+    private AnuncioRepository anuncioRepository;
 
     @RequestMapping(value = "/user/cadastrar/anuncio", method = RequestMethod.GET)
     public ModelAndView getPageCadastrarAnuncio(AnuncioForm anuncioForm){
@@ -37,7 +37,7 @@ public class An {
     public ModelAndView getPageListarAnuncios(){
         ModelAndView model = new ModelAndView();
 
-        model.addObject("anuncios", anuncioRep.findAll());
+        model.addObject("anuncios", anuncioRepository.findAll());
 
         model.setViewName("user/listar_anuncios");
 
