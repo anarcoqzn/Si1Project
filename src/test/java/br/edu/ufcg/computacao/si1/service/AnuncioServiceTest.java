@@ -22,7 +22,6 @@ import static junit.framework.TestCase.*;
 @SpringBootTest
 public class AnuncioServiceTest {
 
-    @Autowired
     private AnuncioService anuncioService;
 
     @Autowired
@@ -35,7 +34,7 @@ public class AnuncioServiceTest {
     public void setUp() {
         anuncio1 = new Anuncio("Anuncio de Movel", new Date(), 100, Notas.notas[2], "movel");
         anuncio2 = new Anuncio("Anuncio de Imovel", new Date(), 100000, Notas.notas[3], "imovel");
-        anuncio3 = new Anuncio("Anuncio de Emprego", new Date(), 0, Notas.notas[1], "emprego");
+        anuncio3 = new Anuncio("Anuncio de Emprego", new Date(), 0, Notas.notas[1], "emprego", "construção civil");
     }
 
     @After
@@ -97,6 +96,15 @@ public class AnuncioServiceTest {
         assertTrue(anuncioService.get("movel").contains(anuncioMovel));
         assertTrue(anuncioService.get("imovel").contains(anuncioImovel));
         assertTrue(anuncioService.get("emprego").contains(anuncioEmprego));
+    }
+    
+    @Test
+    public void testGetCategoria() {
+      Anuncio anuncioEmprego = anuncioService.create(anuncio3);
+      
+      assertNotNull(anuncioEmprego);
+
+      assertEquals(anuncioEmprego.getCategoria(), "pedreiro");
     }
 
     @Test

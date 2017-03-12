@@ -54,7 +54,7 @@ public class AnuncioController {
         anuncio.setTitulo(anuncioForm.getTitulo());
         anuncio.setPreco(anuncioForm.getPreco());
         anuncio.setTipo(anuncioForm.getTipo());
-
+        anuncio.setCategoria(anuncioForm.getCategoria());
         anuncioService.create(anuncio);
 
         attributes.addFlashAttribute("mensagem", "Anúncio cadastrado com sucesso!");
