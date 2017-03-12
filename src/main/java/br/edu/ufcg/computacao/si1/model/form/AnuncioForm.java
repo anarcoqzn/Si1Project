@@ -14,7 +14,7 @@ public class AnuncioForm {
     @NotNull(message = "O titulo não pode ser nulo.")
     @NotEmpty(message = "O titulo não pode esta vazio.")
     
-    @Size(min = 10, max = 100, message = "O titulo deve ter entre 2 e 100 caracters")
+    @Size(min = 2, max = 100, message = "O titulo deve ter entre 2 e 100 caracters")
     private String titulo;
     
     @NotNull(message = "O preçço não pode ser nulo.")
@@ -25,6 +25,7 @@ public class AnuncioForm {
     @NotEmpty(message = "Escolha um tipo para o anúncio.")
     private String tipo;
     
+    @Size(min = 2, max = 100, message = "A categoria deve ter entre 2 e 100 caracters")
     private String categoria;
     
     public String getCategoria() {
@@ -64,4 +65,3 @@ public class AnuncioForm {
         return tipos;
     }
 }
-

@@ -2,24 +2,30 @@
 <html
         xmlns:th="http://www.thymeleaf.org"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorator="layout/layout_user">
+        layout:decorator="layout/layout_company">
 <head>
     <title>.:: ad-extreme ::. - user</title>
 </head>
 <th:block layout:fragment="conteudo">
     <div class="col-md-offset-2 col-md-8">
+    
         <h1>Anúncios</h1>
         <!-- Text input-->
         <div th:if="${anuncios.isEmpty()}">
             <h4>Nenhum Anúncio listado</h4>
         </div>
+        
+        <form class="form-inline"  method="post" role="form" th:object="${anuncioForm}" th:action="@{/user/buscar/anuncio}">
+        
+        </form>
+        
         <div th:if="${anuncios != null}" class="table-responsive">
             <table style="width:100%" class="table table-bordered">
                 <tr>
                     <th>Titulo</th>
                     <th>Tipo</th>
+                    <th>Categoria/tag</th>
                     <th>Postado</th>
-                    <th>Categoria</th>
                     <th align="right">Preço</th>
                 </tr>
 
@@ -27,8 +33,8 @@
                     <tr>
                         <td th:text="${item.titulo}"></td>
                         <td th:text="${#strings.toUpperCase(item.tipo)}"> - </td>
-                        <td th:text="${item.dataDeCriacao}"> - </td>
                         <td th:text="${item.categoria}"></td>
+                        <td th:text="${item.dataDeCriacao}"> - </td>
                         <td align="center" th:text="${'R$ ' + #numbers.formatDecimal(item.preco, 0, 'COMMA', 2, 'POINT')}">0.00</td>
                     </tr>
                 </th:block>
