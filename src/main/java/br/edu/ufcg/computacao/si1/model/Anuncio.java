@@ -36,6 +36,9 @@ public class Anuncio {
 
     @Column(name = "tipo", nullable = false)
     private String tipo;
+    
+    @Column(name = "categoria", nullable = true)
+    private String categoria;
 
     public Anuncio(String titulo, Date dataDeCriacao, double preco, String nota, String tipo) {
         this.titulo = titulo;
@@ -44,6 +47,11 @@ public class Anuncio {
         this.nota = nota;
         this.tipo = tipo;
     }
+    
+    public Anuncio(String titulo, Date dataDeCriacao, double preco, String nota, String tipo, String categoria) {
+      this(titulo, dataDeCriacao, preco, nota, tipo);
+      this.categoria = categoria;
+  }
 
     public Anuncio() {
         titulo = "";
@@ -51,6 +59,7 @@ public class Anuncio {
         preco = 0;
         nota = "";
         tipo = "";
+        categoria = "";
     }
 
     /**
@@ -70,6 +79,14 @@ public class Anuncio {
 
     public String getTitulo() {
         return titulo;
+    }
+    
+    public void setCategoria(String categoria) {
+      this.categoria = categoria;
+    }
+    
+    public String getCategoria() {
+      return categoria;
     }
 
     public void setTitulo(String titulo) {
