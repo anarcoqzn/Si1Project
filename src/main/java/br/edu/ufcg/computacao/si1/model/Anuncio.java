@@ -14,7 +14,6 @@ public class Anuncio {
 
     private static final String[] tipos = new String[] {"movel", "imovel", "emprego"};
 
-
     private final static DateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
 
     @Id
@@ -39,6 +38,9 @@ public class Anuncio {
     
     @Column(name = "categoria", nullable = true)
     private String categoria;
+    
+    @Column(name = "avaliacao")
+    private String avaliacao;
 
     public Anuncio(String titulo, Date dataDeCriacao, double preco, String nota, String tipo) {
         this.titulo = titulo;
@@ -123,6 +125,14 @@ public class Anuncio {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+    
+    public void setAvaliacao(String avaliacao) {
+      this.avaliacao = avaliacao;
+    }
+    
+    public String getAvaliacao() {
+      return avaliacao;
     }
 
     @Override

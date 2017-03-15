@@ -40,14 +40,15 @@
         </form>
 
 
-        <div th:if="${anuncios != null}" class="table-responsive">
-            <table style="width:100%" class="table table-bordered">
+        <div th:if="${anuncios != null}"  class="table-responsive">
+            <table style="width:100%" class="table table-hover">
                 <tr>
                     <th>Titulo</th>
                     <th>Tipo</th>
                     <th>Categoria-tag</th>
                     <th>Postado</th>
                     <th align="right">Preço</th>
+                    <th>Avaliação do criador</th>
                 </tr>
 
                 <th:block th:each="item : ${anuncios}">
@@ -57,6 +58,7 @@
                         <td th:text="${item.categoria}"></td>
                         <td th:text="${item.dataDeCriacao}"> - </td>
                         <td align="center" th:text="${'R$ ' + #numbers.formatDecimal(item.preco, 0, 'COMMA', 2, 'POINT')}">0.00</td>
+						            <td th:text="${item.avaliacao}"></td>
                     </tr>
                 </th:block>
             </table>

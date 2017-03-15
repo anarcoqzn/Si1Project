@@ -62,7 +62,7 @@ public abstract class AnuncioAbstractController {
 
     return model;
   }
-
+  
   public abstract ModelAndView cadastroAnuncio(@Valid AnuncioForm anuncioForm, BindingResult result,
       RedirectAttributes attributes);
 
