@@ -67,8 +67,8 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 		return nome;
 	}
 
-	public void setNome(String n) {
-		this.nome = n;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getEmail() {
@@ -91,8 +91,8 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 		return role;
 	}
 
-	public void setRole(String r) {
-		this.role = r;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }
