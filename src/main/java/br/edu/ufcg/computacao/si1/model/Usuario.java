@@ -28,6 +28,12 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 	
 	@Column
 	private String role;
+
+/*	@Column
+	private String cashView;
+	
+	@Column
+	private String realCash;*/
 	
 	public Usuario() {
 		super("default", "default", AuthorityUtils.createAuthorityList("USER"));

@@ -1,14 +1,14 @@
 package br.edu.ufcg.computacao.si1.config;
 
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
-import org.springframework.boot.context.embedded.ErrorPage;
+import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 @Configuration
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebPageErrorConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public EmbeddedServletContainerCustomizer containerCustomizer() {
 
