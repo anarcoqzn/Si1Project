@@ -1,27 +1,41 @@
 package br.edu.ufcg.computacao.si1.model;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.UserDetails;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-import javax.persistence.*;
-import java.util.Collection;
-import java.util.LinkedList;
+import org.springframework.security.core.authority.AuthorityUtils;
 
 @Entity(name = "Usuario")
 @Table(name = "tb_usuario")
 public class Usuario extends org.springframework.security.core.userdetails.User {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
 	@Column
 	private String nome;
+
 	@Column(unique = true)
 	private String email;
+
 	@Column
 	private String senha;
+
 	@Column
 	private String role;
+
+	// A composição de Conta nesta classse tem relação OneToOne com o usuário.
+	private Conta conta = new Conta(1000000);
 
 	public Usuario() {
 		super("default", "default", AuthorityUtils.createAuthorityList("USER"));
@@ -37,6 +51,26 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 		this.role = role;
 	}
 
+	/**
+	 * Recupera valor de relação OneToOne com o usuário.
+	 * 
+	 * @return O número da conta
+	 */
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "numero_conta")
+	public Long getNumeroConta() {
+		return conta.getNumero();
+	}
+
+	/**
+	 * Recupera o saldo do usuário.
+	 * 
+	 * @return O saldo da conta deste usuário.
+	 */
+	public double getSaldoConta() {
+		return conta.getSaldo();
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -45,11 +79,11 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 		this.id = id;
 	}
 
-	public String getN() {
+	public String getNome() {
 		return nome;
 	}
 
-	public void setN(String n) {
+	public void setNome(String n) {
 		this.nome = n;
 	}
 
@@ -69,11 +103,11 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 		this.senha = senha;
 	}
 
-	public String getR() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setR(String r) {
+	public void setRole(String r) {
 		this.role = r;
 	}
 
