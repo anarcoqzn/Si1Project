@@ -31,10 +31,20 @@
                     <ul class="dropdown-menu">
                         <li><a th:href="@{/user/cadastrar/anuncio}">Cadastrar</a></li>
                         <li><a th:href="@{/user/listar/anuncios}">Todos os Anúncios</a></li>
+                        <li><a th:href="@{/user/listar/meus-anuncios}">Meus Anúncios</a></li>
                     </ul>
                 </li>
             </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <a href="/saldos">Saldos</a>
+                </li>
+                <li>
+                    <a href="/about-us">About Us</a>
+                </li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"	onClick="redirecionar('')">My Profile</a></li>	
                 <li>
                     <a href="javascript:document.logout.submit()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                     <form name="logout" th:action="@{/logout}" method="post" th:hidden="true">

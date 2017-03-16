@@ -39,4 +39,12 @@ public class WebPageController {
 
         return model;
     }
+    
+    @RequestMapping(value = "/about-us", method = RequestMethod.GET)
+    public ModelAndView getPageAboutUs(){
+        ModelAndView model = new ModelAndView();
+        model.setViewName("about_us");
+
+        return model;
+    }
 }

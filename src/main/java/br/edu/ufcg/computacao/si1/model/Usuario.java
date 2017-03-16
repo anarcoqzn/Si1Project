@@ -12,29 +12,35 @@ import org.springframework.security.core.authority.AuthorityUtils;
 @Entity(name = "Usuario")
 @Table(name = "tb_usuario")
 public class Usuario extends org.springframework.security.core.userdetails.User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column
 	private String nome;
-	
+
 	@Column(unique = true)
 	private String email;
-	
+
 	@Column
 	private String senha;
-	
+
 	@Column
 	private String role;
 
 /*	@Column
-	private String cashView;
+	private String saldo;
 	
 	@Column
-	private String realCash;*/
+	private String saldoCredor;
 	
+	@Column
+	private String saldoVenda;
+	
+	@Column
+	private String saldoDevedor;*/
+
 	public Usuario() {
 		super("default", "default", AuthorityUtils.createAuthorityList("USER"));
 	}
