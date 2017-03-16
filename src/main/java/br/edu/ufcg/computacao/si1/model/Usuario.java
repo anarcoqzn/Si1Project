@@ -1,28 +1,34 @@
 package br.edu.ufcg.computacao.si1.model;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.UserDetails;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import javax.persistence.*;
-import java.util.Collection;
-import java.util.LinkedList;
+import org.springframework.security.core.authority.AuthorityUtils;
 
 @Entity(name = "Usuario")
 @Table(name = "tb_usuario")
 public class Usuario extends org.springframework.security.core.userdetails.User {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	@Column
 	private String nome;
+	
 	@Column(unique = true)
 	private String email;
+	
 	@Column
 	private String senha;
+	
 	@Column
 	private String role;
-
+	
 	public Usuario() {
 		super("default", "default", AuthorityUtils.createAuthorityList("USER"));
 	}
@@ -45,11 +51,11 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 		this.id = id;
 	}
 
-	public String getN() {
+	public String getNome() {
 		return nome;
 	}
 
-	public void setN(String n) {
+	public void setNome(String n) {
 		this.nome = n;
 	}
 
@@ -69,11 +75,11 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 		this.senha = senha;
 	}
 
-	public String getR() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setR(String r) {
+	public void setRole(String r) {
 		this.role = r;
 	}
 
