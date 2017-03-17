@@ -28,6 +28,9 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 
 	@Column
 	private String role;
+	
+	@Column
+	private String reputacao;
 
 /*	@Column
 	private String saldo;
@@ -43,6 +46,8 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 
 	public Usuario() {
 		super("default", "default", AuthorityUtils.createAuthorityList("USER"));
+	    this.reputacao = Notas.notas[0];
+
 	}
 
 	public Usuario(String nome, String email, String senha, String role) {
@@ -53,6 +58,8 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 		this.email = email;
 		this.senha = senha;
 		this.role = role;
+	    this.reputacao = Notas.notas[0];
+
 	}
 
 	public Long getId() {
