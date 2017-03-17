@@ -1,10 +1,13 @@
 package br.edu.ufcg.computacao.si1.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -32,9 +35,21 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 	@Column
 	private String saldoCredor;
 	
-	@Column
-	private String saldoDevedor;
 
+    @Column
+	private String saldoDevedor;
+    
+    @OneToMany(mappedBy = "criador")
+	private List<Anuncio> anuncios;
+
+	public List<Anuncio> getAnuncios() {
+	  return anuncios;
+	}
+	
+	public void setAnuncios(List<Anuncio> anuncios) {
+	  this.anuncios = anuncios;
+	}
+	
 	public String getSaldoCredor() {
 		return saldoCredor;
 	}

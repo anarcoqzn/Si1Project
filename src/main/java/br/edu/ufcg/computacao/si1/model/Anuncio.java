@@ -1,9 +1,16 @@
 package br.edu.ufcg.computacao.si1.model;
 
-import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * Created by Marcus Oliveira on 08/12/16.
@@ -39,7 +46,10 @@ public class Anuncio {
     @Column(name = "categoria", nullable = true)
     private String categoria;
     
-
+    @ManyToOne
+    @Column(name = "criador")
+    private Usuario criador;
+    
     public Anuncio(String titulo, Date dataDeCriacao, double preco, String nota, String tipo) {
         this.titulo = titulo;
         this.dataDeCriacao = dataDeCriacao;
@@ -81,6 +91,14 @@ public class Anuncio {
         return titulo;
     }
     
+    public Usuario getCriador() {
+      return criador;
+    }
+
+    public void setCriador(Usuario criador) {
+      this.criador = criador;
+    }
+
     public void setCategoria(String categoria) {
       this.categoria = categoria;
     }

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.ufcg.computacao.si1.model.Anuncio;
+import br.edu.ufcg.computacao.si1.model.Usuario;
 import br.edu.ufcg.computacao.si1.model.form.AnuncioForm;
 
 @Controller
@@ -39,6 +40,7 @@ public class UserAnuncioController extends AnuncioAbstractController {
       anuncio.setPreco(anuncioForm.getPreco());
       anuncio.setTipo(anuncioForm.getTipo());
       anuncio.setCategoria(anuncioForm.getCategoria());
+      //TODO anuncio.setCriador(getCriador());
 
       anuncioService.create(anuncio);
 

@@ -39,7 +39,8 @@ public class CompanyAnuncioController extends AnuncioAbstractController {
         anuncio.setPreco(anuncioForm.getPreco());
         anuncio.setTipo(anuncioForm.getTipo());
         anuncio.setCategoria(anuncioForm.getCategoria());
-        
+        //TODO anuncio.setCriador(getCriador());
+
         anuncioService.create(anuncio);
 
         attributes.addFlashAttribute("mensagem", "Anúncio cadastrado com sucesso!");

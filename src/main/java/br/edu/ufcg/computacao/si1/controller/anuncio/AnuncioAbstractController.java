@@ -81,9 +81,6 @@ public abstract class AnuncioAbstractController {
       case 2:
         Collections.sort(anuncios, new CompAnuncioPrecoAsc());
         break;
-      case 3:
-        //TODO
-        break;
     }
 
     ModelAndView model = new ModelAndView();
