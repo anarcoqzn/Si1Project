@@ -39,8 +39,7 @@ public class UserAnuncioController extends AnuncioAbstractController {
       anuncio.setPreco(anuncioForm.getPreco());
       anuncio.setTipo(anuncioForm.getTipo());
       anuncio.setCategoria(anuncioForm.getCategoria());
-      //TODO Solução temporária, ainda é necessário criar uma ligação entre usuário e anúncio criado
-      anuncio.setAvaliacao("");
+
       anuncioService.create(anuncio);
 
       attributes.addFlashAttribute("mensagem", "Anúncio cadastrado com sucesso!");
