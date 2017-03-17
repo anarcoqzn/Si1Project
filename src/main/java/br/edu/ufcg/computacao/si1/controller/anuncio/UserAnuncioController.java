@@ -46,7 +46,15 @@ public class UserAnuncioController extends AnuncioAbstractController {
       attributes.addFlashAttribute("mensagem", "Anúncio cadastrado com sucesso!");
       return new ModelAndView("redirect:/user/cadastrar/anuncio");
   }
-
-
+  
+//  @RequestMapping(value = "/saldos", method = RequestMethod.GET)
+//  public ModelAndView getPageListarSaldos() {
+//    ModelAndView model = new ModelAndView();
+//
+//    model.setViewName("sharedProfile/listar_saldos");
+//    model.addObject("saldos", "Em Construção");
+//
+//    return model;
+//  }
 
 }

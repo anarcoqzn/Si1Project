@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class WebPagesController {
+public class WebPageController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getPageIndex(){
@@ -36,6 +36,14 @@ public class WebPagesController {
     public ModelAndView getPageIndexCompany(){
         ModelAndView model = new ModelAndView();
         model.setViewName("company/index");
+
+        return model;
+    }
+    
+    @RequestMapping(value = "/about-us", method = RequestMethod.GET)
+    public ModelAndView getPageAboutUs(){
+        ModelAndView model = new ModelAndView();
+        model.setViewName("about_us");
 
         return model;
     }

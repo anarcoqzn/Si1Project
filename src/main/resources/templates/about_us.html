@@ -5,7 +5,7 @@
         lang="pt-br">
 <head>
     <meta charset="UTF-8"/>
-    <title>.:: ad-extreme ::.</title>
+    <title>.:: about-us ::.</title>
     <!--[if IE]><link rel="shortcut icon" th:href="@{img/favicon.ico}"/><![endif]-->
     <link rel="icon" th:href="@{img/favicon.ico}"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"  media="screen"/>
@@ -25,13 +25,8 @@
                 </button>
             </div>
             <div class="collapse navbar-collapse navbar-menubuilder">
-                <ul class="nav navbar-nav navbar-left">
-                    <li>
-                        <a href="/about-us">About Us</a>
-                    </li>
-                </ul>
-
                 <ul class="nav navbar-nav navbar-right">
+					<li><a href="/user">Estou logado?</a></li>	
                     <li>
                         <a th:href="@{/cadastrar-se}"><i class="fa fa-user-plus" aria-hidden="true"></i> Cadastra-se</a>
                     </li>
@@ -47,6 +42,16 @@
         <div class="row">
             <th:block layout:fragment="conteudo"/>
         </div>
+        
+      <div class="hero-unit">
+        <h1>Universidade Federal de Campina Grande </h1>
+        <p>
+        	Projeto referente a disciplina de Sistemas da Informação 1 do curso de Ciência da Computação
+        </p>
+        <p>Acesse em: 
+          <a href="https://github.com/anarcoqzn/Si1Project">GitHub</a>
+        </p>
+      </div>
     </div>
     <!-- init footer -->
     <footer class="footer">

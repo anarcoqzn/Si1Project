@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by Marcus Oliveira on 08/12/16.
  */
 @Entity
-@Table(name="tb_anuncio")
+@Table(name = "tb_anuncio")
 public class Anuncio {
 
     private static final String[] tipos = new String[] {"movel", "imovel", "emprego"};
