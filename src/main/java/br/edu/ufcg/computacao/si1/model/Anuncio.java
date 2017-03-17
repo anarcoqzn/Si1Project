@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -47,7 +48,7 @@ public class Anuncio {
     private String categoria;
     
     @ManyToOne
-    @Column(name = "criador")
+    @JoinColumn(name = "criador")
     private Usuario criador;
     
     public Anuncio(String titulo, Date dataDeCriacao, double preco, String nota, String tipo) {
