@@ -40,7 +40,7 @@ public class CompanyAnuncioController extends AnuncioAbstractController {
         anuncio.setTipo(anuncioForm.getTipo());
         anuncio.setCategoria(anuncioForm.getCategoria());
         
-        //Solução temporária, ainda é necessário criar uma ligação entre usuário e anúncio criado
+        //TODO Solução temporária, ainda é necessário criar uma ligação entre usuário e anúncio criado
         anuncio.setAvaliacao("");
         
         anuncioService.create(anuncio);

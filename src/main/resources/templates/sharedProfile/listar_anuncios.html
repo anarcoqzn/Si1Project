@@ -37,10 +37,21 @@
                  <button type="submit" class="btn btn-success">Buscar</button>
              </div>
 
+             <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Ordenar
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="sort?tipo=0">Mais novos</a></li>
+                  <li><a href="sort?tipo=1">Mais baratos</a></li>
+                  <li><a href="sort?tipo=2">Mais caros</a></li>
+                  <li><a href="sort?tipo=3">Melhores avaliados</a></li>
+                </ul>
+             </div>
         </form>
 
 
         <div th:if="${anuncios != null}"  class="table-responsive">
+
             <table style="width:100%" class="table table-hover">
                 <tr>
                     <th>Titulo</th>
