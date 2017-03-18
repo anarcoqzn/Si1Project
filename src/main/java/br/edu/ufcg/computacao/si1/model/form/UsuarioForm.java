@@ -26,7 +26,7 @@ public class UsuarioForm {
 	@Size(min = 4, max = 16, message = "A senha de confirmação deve ter entre 4 e 16 caracteres.")
 	private String confirmSenha;
 
-	@NotNull
+	@NotNull(message="A razão social não pode ser nula.")
 	private Integer role;
 
 	public String getNome() {
