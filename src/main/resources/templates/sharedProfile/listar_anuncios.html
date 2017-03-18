@@ -8,46 +8,36 @@
 </head>
 <th:block layout:fragment="conteudo">
     <div class="col-md-offset-2 col-md-8">
-
-        <h1>Anúncios</h1>
-        <!-- Text input-->
-        <div th:if="${anuncios.isEmpty()}">
-            <h4>Nenhum Anúncio listado</h4>
-        </div>
-
+		<h1>Anúncios</h1>
         <form class="form-inline"  method="get" th:action="@{buscar}">
-         	  <!-- Form Name -->
-          	<legend>Buscar anúncio</legend>
-
-          	<!-- Text input -->
+         	  	<!-- Form Name -->
+	          	<h4>Buscar anúncio</h4>
+	
+	    		<!-- Button -->
+	            <div class="dropdown">
+	               <button class="btn pull-right btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Ordenar
+	               <span class="caret"></span></button>
+	               <ul class="dropdown-menu dropdown-menu-right">
+	                 <li><a href="sort?tipo=0">Mais novos</a></li>
+	                 <li><a href="sort?tipo=1">Mais baratos</a></li>
+	                 <li><a href="sort?tipo=2">Mais caros</a></li>
+	               </ul>
+	            </div>
+                <!-- Text input -->
    			    <div class="form-group">
      			      <label for="chave">Termo:</label>
-      			    <input type="chave" class="form-control" id="chave" name="chave" placeholder="digite um termo de busca"/>
+      			    <input type="text" class="form-control" id="chave" name="chave" placeholder="digite um termo de busca"/>
     		    </div>
-
     		    <!-- Checkbox (Double)-->
     		    <div class="checkbox">
     		        <label>em:</label>
      			      <label><input type="checkbox" name="nome"/> Nome do anúncio</label>
      			      <label><input type="checkbox" name="categoria"/>Categoria-tag</label>
     		    </div>
-
-    		    <!-- Button -->
              <div class="form-group">
                  <button type="submit" class="btn btn-success">Buscar</button>
              </div>
-
-             <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Ordenar
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="sort?tipo=0">Mais novos</a></li>
-                  <li><a href="sort?tipo=1">Mais baratos</a></li>
-                  <li><a href="sort?tipo=2">Mais caros</a></li>
-                </ul>
-             </div>
         </form>
-
 
         <div th:if="${anuncios != null}"  class="table-responsive">
 
@@ -70,6 +60,10 @@
                     </tr>
                 </th:block>
             </table>
+        </div>
+        <!-- Text input-->
+        <div th:if="${anuncios.isEmpty()}">
+            <h4>Nenhum Anúncio listado</h4>
         </div>
     </div>
 </th:block>

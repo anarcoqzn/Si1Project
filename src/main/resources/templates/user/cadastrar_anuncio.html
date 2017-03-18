@@ -57,8 +57,7 @@
                             <div class="radio" th:if="${anuncioForm.tipos != null}">
                                 <th:block th:object="${anuncioForm}">
                                     <label for="radios-0" th:each="tipo : *{tipos}" th:if="${tipo.length() lt 7}">
-                                        <input type="radio" name="tipo" id="radios-0" th:value="${tipo}"/>
-                                        <p th:text="${tipo}"></p>
+                                        <input type="radio" name="tipo" id="radios-0" th:value="${tipo}" th:text="${tipo}"/>
                                     </label>
                                 </th:block>
                             </div>
