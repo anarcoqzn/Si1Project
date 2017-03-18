@@ -18,7 +18,7 @@
 <!-- init menu -->
 <div id="menu" class="navbar navbar-default " role="navigation">
     <div class="container-fluid">
-        <div class="navbar-header"><a class="navbar-brand" th:href="@{/}"><i class="fa fa-usd" aria-hidden="true"></i>
+        <div class="navbar-header"><a class="navbar-brand" href="#" onClick="redirecionar('/')"><i class="fa fa-usd" aria-hidden="true"></i>
             ad-extreme</a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
                 <span class="sr-only">Toggle navigation</span>
@@ -35,20 +35,16 @@
                     <ul class="dropdown-menu">
                         <li><a href="#" onClick="redirecionar('cadastrar/anuncio')">Cadastrar</a></li>
                         <li><a href="#" onClick="redirecionar('listar/anuncios')">Todos os Anúncios</a></li>
-                        <li><a href="#"	onClick="redirecionar('listar/meus-anuncios')">Meus Anúncios</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-left">
                 <li>
-                    <a href="/saldos">Saldos</a>
-                </li>
-                <li>
-                    <a href="/contact">About Us</a>
+                    <a href="/about-us">About Us</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-            	<li><a href="#"	onClick="redirecionar('')">My Profile</a></li>	
+            	<li><a href="#"	onClick="redirecionar('/')">My Profile</a></li>	
                 <li>
                     <a href="javascript:document.logout.submit()"><i class="fa fa-sign-out" aria-hidden="true"></i>
                         Logout</a>

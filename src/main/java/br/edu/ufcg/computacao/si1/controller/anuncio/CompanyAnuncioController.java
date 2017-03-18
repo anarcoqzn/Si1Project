@@ -1,7 +1,11 @@
 package br.edu.ufcg.computacao.si1.controller.anuncio;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.ufcg.computacao.si1.model.Anuncio;
+import br.edu.ufcg.computacao.si1.model.Usuario;
 import br.edu.ufcg.computacao.si1.model.form.AnuncioForm;
 
 @Controller
@@ -39,8 +44,11 @@ public class CompanyAnuncioController extends AnuncioAbstractController {
         anuncio.setPreco(anuncioForm.getPreco());
         anuncio.setTipo(anuncioForm.getTipo());
         anuncio.setCategoria(anuncioForm.getCategoria());
-        //TODO anuncio.setCriador(getCriador());
-
+ 
+        User springUser =  (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<Usuario> criador = usuarioService.getByEmail(springUser.getUsername());
+        anuncio.setCriador(criador.get());
+        
         anuncioService.create(anuncio);
 
         attributes.addFlashAttribute("mensagem", "Anúncio cadastrado com sucesso!");

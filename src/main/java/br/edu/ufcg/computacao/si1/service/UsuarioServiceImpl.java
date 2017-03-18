@@ -37,6 +37,8 @@ public class UsuarioServiceImpl implements UsuarioService{
                 usuario.setRole("COMPANY");
                 break;
         }
+        usuario.setSaldoDevedor((float) 0.0);
+        usuario.setSaldoCredor((float) 0.0);
 
         System.out.println(usuario + "estah sendo criado");
         return usuarioRepository.save(usuario);

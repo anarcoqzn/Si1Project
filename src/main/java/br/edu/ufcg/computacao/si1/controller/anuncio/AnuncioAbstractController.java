@@ -24,6 +24,7 @@ import br.edu.ufcg.computacao.si1.model.comparator.CompAnuncioPrecoDesc;
 import br.edu.ufcg.computacao.si1.model.form.AnuncioForm;
 import br.edu.ufcg.computacao.si1.repository.AnuncioRepository;
 import br.edu.ufcg.computacao.si1.service.AnuncioServiceImpl;
+import br.edu.ufcg.computacao.si1.service.UsuarioServiceImpl;
 
 @Controller
 public abstract class AnuncioAbstractController {
@@ -33,6 +34,9 @@ public abstract class AnuncioAbstractController {
 
   @Autowired
   protected AnuncioRepository anuncioRepository;
+  
+  @Autowired
+  protected UsuarioServiceImpl usuarioService;
 
   @RequestMapping(value = "/listar/anuncios", method = RequestMethod.GET)
   public ModelAndView getPageListarAnuncios() {

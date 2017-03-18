@@ -33,16 +33,26 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 	private String role;
 
 	@Column
-	private String saldoCredor;
-	
+	private float saldoCredor;
 
     @Column
-	private String saldoDevedor;
+	private float saldoDevedor;
     
     @OneToMany(mappedBy = "criador")
 	private List<Anuncio> anuncios;
+    
+    public Usuario(String nome, String email, String senha, String role) {
 
-	public List<Anuncio> getAnuncios() {
+      super(email, senha, AuthorityUtils.createAuthorityList(role));
+
+      this.nome = nome;
+      this.email = email;
+      this.senha = senha;
+      this.role = role;
+
+  }
+
+  public List<Anuncio> getAnuncios() {
 	  return anuncios;
 	}
 	
@@ -50,35 +60,24 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 	  this.anuncios = anuncios;
 	}
 	
-	public String getSaldoCredor() {
+	public float getSaldoCredor() {
 		return saldoCredor;
 	}
 
-	public void setSaldoCredor(String saldoCredor) {
-		this.saldoCredor = saldoCredor;
-	}
-
-	public String getSaldoDevedor() {
+	public float getSaldoDevedor() {
 		return saldoDevedor;
 	}
 
-	public void setSaldoDevedor(String saldoDevedor) {
+	public void setSaldoDevedor(float saldoDevedor) {
 		this.saldoDevedor = saldoDevedor;
 	}
+	
+	public void setSaldoCredor(float saldoCredor) {
+      this.saldoCredor = saldoCredor;
+    }
 
 	public Usuario() {
 		super("default", "default", AuthorityUtils.createAuthorityList("USER"));
-
-	}
-
-	public Usuario(String nome, String email, String senha, String role) {
-
-		super(email, senha, AuthorityUtils.createAuthorityList(role));
-
-		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
-		this.role = role;
 
 	}
 
@@ -121,5 +120,21 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+
+    @Override
+    public int hashCode() {
+      final int prime = 31;
+      int result = super.hashCode();
+      result = prime * result + ((anuncios == null) ? 0 : anuncios.hashCode());
+      result = prime * result + ((email == null) ? 0 : email.hashCode());
+      result = prime * result + ((id == null) ? 0 : id.hashCode());
+      result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+      result = prime * result + ((role == null) ? 0 : role.hashCode());
+      result = prime * result + Float.floatToIntBits(saldoCredor);
+      result = prime * result + Float.floatToIntBits(saldoDevedor);
+      result = prime * result + ((senha == null) ? 0 : senha.hashCode());
+      return result;
+    }
 
 }
