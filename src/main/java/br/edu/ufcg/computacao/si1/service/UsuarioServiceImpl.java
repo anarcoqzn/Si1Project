@@ -40,7 +40,7 @@ public class UsuarioServiceImpl implements UsuarioService{
         usuario.setSaldoDevedor((float) 0.0);
         usuario.setSaldoCredor((float) 0.0);
 
-        System.out.println(usuario + "estah sendo criado");
+        System.out.println(usuario + " estah sendo criado");
         return usuarioRepository.save(usuario);
     }
 
@@ -51,7 +51,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public Optional<Usuario> getByEmail(String email) {
-        System.out.println(email + "estah sendo retornado");
+        System.out.println(email + " estah sendo retornado");
         return Optional.ofNullable(usuarioRepository.findByEmail(email));
     }
 
@@ -62,7 +62,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public boolean update(Usuario usuario) {
-        System.out.println(usuario + "estah sendo atualizado");
+        System.out.println(usuario + " estah sendo atualizado");
 
         if (usuarioRepository.exists(usuario.getId())) {
             usuarioRepository.save(usuario);

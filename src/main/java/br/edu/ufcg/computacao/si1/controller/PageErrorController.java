@@ -20,4 +20,5 @@ public class PageErrorController {
     public String internalServerError() {
         return "error/500";
     }
+    
 }
