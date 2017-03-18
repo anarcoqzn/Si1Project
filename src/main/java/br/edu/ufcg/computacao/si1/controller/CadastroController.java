@@ -36,12 +36,16 @@ public class CadastroController {
             attributes.addFlashAttribute("error", "Este email já esta em uso!");
             return new ModelAndView("redirect:/cadastrar-se");
         }
-
+       
+    	if(!(usuarioForm.getSenha().equals(usuarioForm.getConfirmSenha()))){
+    		 attributes.addFlashAttribute("error", "As senhas não batem! Cuidado!");
+    		 return new ModelAndView("redirect:/cadastrar-se");
+    	}
+        
         usuarioService.create(usuarioForm);
 
         attributes.addFlashAttribute("mensagem", "Usuario cadastrado com sucesso!");
         return new ModelAndView("redirect:/cadastrar-se");
     }
-
 
 }

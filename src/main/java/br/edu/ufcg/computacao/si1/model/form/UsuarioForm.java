@@ -13,13 +13,18 @@ public class UsuarioForm {
 	private String nome;
 
 	@NotEmpty(message = "O email não pode ser vazio.")
-	@Email
+	@Email(message = "O email não pode ser inválido.")
 	private String email;
 
 	@NotNull(message = "A senha não pode ser nula.")
-	@NotEmpty
+	@NotEmpty(message = "A senha não pode ser vazia.")
 	@Size(min = 4, max = 16, message = "A senha deve ter entre 4 e 16 caracteres.")
 	private String senha;
+
+	@NotNull(message="A senha de confirmação não bate.")
+	@NotEmpty(message = "A senha de confirmação não pode ser vazia.")
+	@Size(min = 4, max = 16, message = "A senha de confirmação deve ter entre 4 e 16 caracteres.")
+	private String confirmSenha;
 
 	@NotNull
 	private Integer role;
@@ -47,6 +52,15 @@ public class UsuarioForm {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	
+	public String getConfirmSenha() {
+		return confirmSenha;
+	}
+
+	public void setConfirmSenha(String confirmSenha) {
+		this.confirmSenha = confirmSenha;
+	}
 
 	public Integer getRole() {
 		return role;
@@ -55,4 +69,5 @@ public class UsuarioForm {
 	public void setRole(Integer role) {
 		this.role = role;
 	}
+
 }
