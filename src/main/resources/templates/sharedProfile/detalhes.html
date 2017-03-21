@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/layout_shared_profile">
+<head>
+<title>.:: ad-extreme ::. - user</title>
+</head>
+<th:block layout:fragment="conteudo">
+	<div class="row">
+		<h2 class="col-sm-9" th:text="${anuncio.titulo}"></h2>
+		<img class="col-sm-3" th:src="@{/img/surpresa.jpg}"
+			alt="Imagem do produto" height="200" width="200" />
+			
+		<p class="col-sm-2">Detalhes do anúncio</p>
+		<b class="col-sm-2" align="center"
+			th:text="${'Preço R$ ' + #numbers.formatDecimal(anuncio.preco, 0, 'COMMA', 2, 'POINT')}">0.00</b>
+		<p class="col-sm-2" th:text="${anuncio.categoria}"></p>
+		<p class="col-sm-2" th:text="${anuncio.dataDeCriacao}">-</p>
+	</div>
+	
+	<div class="row">
+		<p class="col-sm-4" th:text="${'Nome do anunciante: ' + anuncio.criador.nome}"></p>
+		<p class="col-sm-4" th:text="${'Email do anunciante: ' + anuncio.criador.email}"></p>
+		<td><a  class="btn btn-success" th:href="@{'comprar'(id=${anuncio.id})}">Comprar</a></td>
+	</div>
+
+</th:block>
+</html>

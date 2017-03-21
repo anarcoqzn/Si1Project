@@ -48,6 +48,14 @@ public abstract class AnuncioAbstractController {
 
     return model;
   }
+  
+  @RequestMapping(value = "/listar/detalhes", method = RequestMethod.GET)
+  public ModelAndView getPageDetalhes(@RequestParam Long id){
+      ModelAndView model = new ModelAndView();
+      model.setViewName("sharedProfile/detalhes");
+      model.addObject("anuncio", anuncioService.getById(id).get());
+      return model;
+  }
 
   @RequestMapping(value = "/listar/buscar", method = RequestMethod.GET)
   public ModelAndView getBuscaAnuncios(@RequestParam String chave,
