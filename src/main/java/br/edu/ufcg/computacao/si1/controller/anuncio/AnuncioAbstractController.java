@@ -8,7 +8,11 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
+import br.edu.ufcg.computacao.si1.controller.WebPageController;
+import br.edu.ufcg.computacao.si1.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +38,7 @@ public abstract class AnuncioAbstractController {
 
   @Autowired
   protected AnuncioRepository anuncioRepository;
-  
+
   @Autowired
   protected UsuarioServiceImpl usuarioService;
 
@@ -48,18 +52,48 @@ public abstract class AnuncioAbstractController {
 
     return model;
   }
-  
+
   @RequestMapping(value = "/listar/detalhes", method = RequestMethod.GET)
   public ModelAndView getPageDetalhes(@RequestParam Long id){
-      ModelAndView model = new ModelAndView();
-      model.setViewName("sharedProfile/detalhes");
-      model.addObject("anuncio", anuncioService.getById(id).get());
-      return model;
+    ModelAndView model = new ModelAndView();
+    model.setViewName("sharedProfile/detalhes");
+    model.addObject("anuncio", anuncioService.getById(id).get());
+
+    if(getUsuarioLogado().getAnuncios().contains(anuncioService.getById(id).get())){
+      model.addObject("pertence", true);
+    }else{
+      model.addObject("pertence", false);
+    }
+
+    return model;
+  }
+
+  @RequestMapping(value="/listar/comprar", method = RequestMethod.GET)
+  public ModelAndView comprarAnuncio(@RequestParam("id") Long id){
+
+    Usuario usuarioLogado = getUsuarioLogado();
+    Anuncio anuncioAtual = anuncioService.getById(id).get();
+
+    usuarioLogado.debitar(new Float(anuncioAtual.getPreco()));
+    anuncioAtual.getCriador().creditar(new Float(anuncioAtual.getPreco()));
+
+    anuncioService.delete(id);
+
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.setViewName("sharedProfile/listar_anuncios");
+    modelAndView.addObject("anuncios",anuncioService.getAll());
+    return modelAndView;
+  }
+
+  protected Usuario getUsuarioLogado(){
+    User springUser =  (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Optional<Usuario> user = usuarioService.getByEmail(springUser.getUsername());
+    return user.get();
   }
 
   @RequestMapping(value = "/listar/buscar", method = RequestMethod.GET)
   public ModelAndView getBuscaAnuncios(@RequestParam String chave,
-      @RequestParam Optional<String> nome, @RequestParam Optional<String> categoria) {
+                                       @RequestParam Optional<String> nome, @RequestParam Optional<String> categoria) {
 
     Set<Anuncio> anuncios = new LinkedHashSet<Anuncio>();
 
@@ -103,7 +137,7 @@ public abstract class AnuncioAbstractController {
   }
 
   public abstract ModelAndView cadastroAnuncio(@Valid AnuncioForm anuncioForm, BindingResult result,
-      RedirectAttributes attributes);
+                                               RedirectAttributes attributes);
 
   public abstract ModelAndView getPageCadastrarAnuncio(AnuncioForm anuncioForm);
 

@@ -38,12 +38,9 @@ public class WebPageController {
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public ModelAndView getPageIndexUser(){
         ModelAndView model = new ModelAndView();
-        
-        User springUser =  (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Optional<Usuario> user = usuarioService.getByEmail(springUser.getUsername());
-        model.addObject("user", user.get());
-        
-        
+
+        Usuario user = getUsuarioLogado();
+        model.addObject("user", user);
         model.setViewName("sharedProfile/index");
 
         return model;
@@ -52,10 +49,9 @@ public class WebPageController {
     @RequestMapping(value = "/company", method = RequestMethod.GET)
     public ModelAndView getPageIndexCompany(){
         ModelAndView model = new ModelAndView();
-        
-        User springUser =  (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Optional<Usuario> user = usuarioService.getByEmail(springUser.getUsername());
-        model.addObject("user", user.get());
+
+        Usuario user = getUsuarioLogado();
+        model.addObject("user", user);
        
         model.setViewName("sharedProfile/index");
         
@@ -68,5 +64,11 @@ public class WebPageController {
         model.setViewName("about_us");
 
         return model;
+    }
+
+    protected Usuario getUsuarioLogado(){
+        User springUser =  (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<Usuario> user = usuarioService.getByEmail(springUser.getUsername());
+        return user.get();
     }
 }

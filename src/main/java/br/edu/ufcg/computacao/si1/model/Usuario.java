@@ -51,15 +51,19 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
       this.role = role;
 
   }
+	public Usuario() {
+		super("default", "default", AuthorityUtils.createAuthorityList("USER"));
 
-  public List<Anuncio> getAnuncios() {
+	}
+
+  	public List<Anuncio> getAnuncios() {
 	  return anuncios;
 	}
-	
+
 	public void setAnuncios(List<Anuncio> anuncios) {
 	  this.anuncios = anuncios;
 	}
-	
+
 	public float getSaldoCredor() {
 		return saldoCredor;
 	}
@@ -71,14 +75,17 @@ public class Usuario extends org.springframework.security.core.userdetails.User 
 	public void setSaldoDevedor(float saldoDevedor) {
 		this.saldoDevedor = saldoDevedor;
 	}
-	
+
 	public void setSaldoCredor(float saldoCredor) {
       this.saldoCredor = saldoCredor;
     }
 
-	public Usuario() {
-		super("default", "default", AuthorityUtils.createAuthorityList("USER"));
+	public void creditar(float credito){
+    	this.saldoCredor += credito;
+	}
 
+	public void debitar(float debito){
+		this.saldoDevedor -= debito;
 	}
 
 	public Long getId() {
